@@ -1,0 +1,71 @@
+body { 
+  background-image: linear-gradient(to top, #6bd18e, #2acfaf, #00cacd, #00c2e3, #3fb8ed, #4babdb, #529ec9, #5691b7, #457d91, #40676e, #3d5151, #373b3a);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  margin: 40px;
+}
+
+.btn {
+  background-color: #333;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 20px 8px 0 rgba(0,0,0,0.2);
+}
+.btn-primary {
+  font-family: 'Josefin Sans', sans-serif;
+}
+.btn:hover {
+  background-color: #555;
+}
+
+
+
+.form-control {
+  box-shadow: 0 20px 8px 0 rgba(0,0,0,0.2);
+}
+
+.card-body {
+  animation: fade-in-bottom 3s;
+  font-family: 'Josefin Sans', sans-serif;
+
+}
+
+.card { 
+box-shadow: 0 20px 8px 0 rgba(0,0,0,0.2);
+margin: 50px;
+}
+
+.animate__animated.animate__bounceInUp{
+--animate-duration: 2s;
+text-align: center;
+}
+
+h1 {
+  margin: 10px;
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 60px;
+  color: white;
+  margin-bottom: 20px;
+  text-align: center;
+  text-shadow: 15px 15px 15px rgba(247, 239, 239, 0.3);
+}
+
+.form-label, form-control {
+  font-family: 'Josefin Sans', sans-serif;
+  color: white;
+  font-size: 30px;
+    
+}
+
+
+
+/* h4 {
+  text-size-adjust: 50px;
+} */
+
