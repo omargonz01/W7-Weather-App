@@ -9,8 +9,6 @@ cityForm.addEventListener('submit', (event) => {
     cityData(cityName)
 })
 
-
-
 // now add fetch request
 const cityData = async (name) => {
     const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${name}&APPID=f9720521c9d98aa1a7825815f6fada71`,
@@ -43,21 +41,51 @@ const cityData = async (name) => {
     // use font awesome
     const iconUrl = `http://openweathermap.org/img/w/${iconCode}.png`
 
+    // call animateImages function here
+    animateImages(iconUrl);
+
     // .innerHTML - to create the code
     weatherDeetz.innerHTML = `
-    <h2>${data.name}</h2>
-
-    <h3>Current Temp is: ${cityWeatherF}°F</h3>
-
-    <h5>Today's High: ${cityHighF}°F</h5>
-    <h5>Today's Low: ${cityLowF}°F</h5>
-
-    <h6>The general forecast for today is: ${cityForecast} and its looking like it's, <img class="rain" src="${iconUrl}"> 
-    ${cityForecastDeetz} outside.</h6>
-    <h6>Humidity is at: ${cityHumi}% for the day.</h6>
-
+        <h2>${data.name}</h2>
+        <h3>Current Temp is: ${cityWeatherF}°F</h3>
+        <h5>Today's High: ${cityHighF}°F</h5>
+        <h5>Today's Low: ${cityLowF}°F</h5>
+        <h6>The general forecast for today is: ${cityForecast} and its looking like it's, <img class="rain" src="${iconUrl}"> 
+        ${cityForecastDeetz} outside.</h6>
+        <h6>Humidity is at: ${cityHumi}% for the day.</h6>
     `
-
 }
 
+const animateImages = (iconUrl) => {
+    // create a container for the images
+    const iconContainer = document.querySelector('#icon-container');
 
+    // remove any existing images in the container
+    iconContainer.innerHTML = '';
+
+    // get the position of the weatherDeetz element
+    const weatherDeetz = document.querySelector('form');
+    const weatherDeetzRect = weatherDeetz.getBoundingClientRect();
+
+    // create 10 images and append them to the container
+    for (let i = 0; i < 10; i++) {
+        const img = document.createElement('img');
+        img.src = iconUrl;
+        img.classList.add('rain');
+        img.style.position = 'absolute';
+        img.style.left = `${weatherDeetzRect.left + weatherDeetzRect.width / 2}px`;
+        img.style.top = `${weatherDeetzRect.top + weatherDeetzRect.height / 2}px`;
+        iconContainer.appendChild(img);
+    }
+
+    // create the animation
+    anime({
+        targets: '.rain',
+        translateY: [150, 0],
+        translateX: (el, i) => anime.random(-300, 300),
+        rotate: (el, i) => anime.random(0, 0),
+        delay: anime.stagger(200),
+        duration: 2000,
+        loop: true
+    });
+}
